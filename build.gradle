@@ -1,0 +1,31 @@
+// Top-level build file where you can add configuration options common to all sub-projects/modules.
+buildscript {
+    repositories {
+        google()
+        mavenCentral()
+    }
+    dependencies {
+        classpath "com.android.tools.build:gradle:4.2.1"
+
+        // NOTE: Do not place your application dependencies here; they belong
+        // in the individual module build.gradle files
+
+        // Include AWS Amplify Gradle plugin in classpath
+        classpath 'com.amplifyframework:amplify-tools-gradle-plugin:1.0.2'
+    }
+}
+
+allprojects {
+    repositories {
+        google()
+        mavenCentral()
+        jcenter() // Warning: this repository is going to shut down soon
+    }
+}
+
+// Apply Amplify plugin
+apply plugin: 'com.amplifyframework.amplifytools'
+
+task clean(type: Delete) {
+    delete rootProject.buildDir
+}
