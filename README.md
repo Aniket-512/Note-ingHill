@@ -12,6 +12,6 @@ Run `npm install -g @aws-amplify/cli`
 
 ### 3. Open Android Studio
 - Select "Get from Version Control"
-- Link GitHub accont using login or token
+- Link GitHub accont using login or token (Access token is most likely to work)
 - Paste GitHub repo URL: `https://github.com/Aniket-512/Note-ingHill/`
 - Click "Clone"
