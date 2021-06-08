@@ -2,38 +2,23 @@ package com.example.note_inghill;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
+import android.widget.Button;
 
-import com.amplifyframework.AmplifyException;
-import com.amplifyframework.auth.AuthUserAttribute;
-import com.amplifyframework.auth.AuthUserAttributeKey;
-import com.amplifyframework.auth.cognito.AWSCognitoAuthPlugin;
-import com.amplifyframework.auth.options.AuthSignUpOptions;
 import com.amplifyframework.core.Amplify;
 
 import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity {
 
+    private Button signoutButton;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
-        try {
-            Amplify.addPlugin(new AWSCognitoAuthPlugin());
-            Amplify.configure(getApplicationContext());
-            Log.i("MyAmplifyApp", "Initialized Amplify Auth");
-        } catch (AmplifyException error) {
-            Log.e("MyAmplifyApp", "Could not initialize Amplify Auth", error);
-        }
-
-        // Check whether user is signed in or not
-        Amplify.Auth.fetchAuthSession(
-                result -> Log.i("AmplifyQuickstart", result.toString()),
-                error -> Log.e("AmplifyQuickstart", error.toString())
-        );
 
         /*
         // Test account attributes
@@ -50,12 +35,18 @@ public class MainActivity extends AppCompatActivity {
                 error -> Log.e("AuthQuickstart", error.toString())
         );*/
 
-        // Attempt to sign in
-        Amplify.Auth.signIn(
-                "aniket.ga8@gmail.com",
-                "Pass1234!",
-                result -> Log.i("AuthQuickstart", result.isSignInComplete() ? "Sign in succeeded" : "Sign in not complete"),
-                error -> Log.e("AuthQuickstart", error.toString())
-        );
+        // Sign out intent - move back to AuthActivity
+        Intent signoutIntent = new Intent(this, AuthActivity.class);
+
+        // Sign out using Amplify Auth when button clicked
+        signoutButton = findViewById(R.id.signout_button);
+        signoutButton.setOnClickListener(v -> {
+            Amplify.Auth.signOut(
+                    () -> Log.i("AmplifyAuth", "Signed out successfully"),
+                    error -> Log.e("AmplifyAuth", error.toString())
+            );
+            // start AuthActivity (login)
+            startActivity(signoutIntent);
+        });
     }
 }
