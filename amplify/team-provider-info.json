@@ -9,7 +9,8 @@
       "UnauthRoleName": "amplify-noteinghill-dev-03918-unauthRole",
       "StackName": "amplify-noteinghill-dev-03918",
       "StackId": "arn:aws:cloudformation:ap-south-1:652893551902:stack/amplify-noteinghill-dev-03918/642ee9a0-b743-11eb-bf24-0217332ab114",
-      "AmplifyAppId": "d5x98jbedbpgw"
+      "AmplifyAppId": "d5x98jbedbpgw",
+      "AuthTriggerTemplateURL": ""
     },
     "categories": {
       "auth": {

@@ -21,20 +21,6 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        try {
-            Amplify.addPlugin(new AWSCognitoAuthPlugin());
-            Amplify.configure(getApplicationContext());
-            Log.i("MyAmplifyApp", "Initialized Amplify Auth");
-        } catch (AmplifyException error) {
-            Log.e("MyAmplifyApp", "Could not initialize Amplify Auth", error);
-        }
-
-        // Check whether user is signed in or not
-        Amplify.Auth.fetchAuthSession(
-                result -> Log.i("AmplifyQuickstart", result.toString()),
-                error -> Log.e("AmplifyQuickstart", error.toString())
-        );
-
         /*
         // Test account attributes
         ArrayList<AuthUserAttribute> attributes = new ArrayList<>();
@@ -50,12 +36,5 @@ public class MainActivity extends AppCompatActivity {
                 error -> Log.e("AuthQuickstart", error.toString())
         );*/
 
-        // Attempt to sign in
-        Amplify.Auth.signIn(
-                "aniket.ga8@gmail.com",
-                "Pass1234!",
-                result -> Log.i("AuthQuickstart", result.isSignInComplete() ? "Sign in succeeded" : "Sign in not complete"),
-                error -> Log.e("AuthQuickstart", error.toString())
-        );
     }
 }
