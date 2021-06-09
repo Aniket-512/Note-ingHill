@@ -21,10 +21,8 @@ public class AuthActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.auth_activity);
 
-<<<<<<< HEAD
+
         // Amplify Auth plugin setup on device
-=======
->>>>>>> origin/Auth
         try {
             Amplify.addPlugin(new AWSCognitoAuthPlugin());
             Amplify.configure(getApplicationContext());
@@ -39,15 +37,10 @@ public class AuthActivity extends AppCompatActivity {
                 error -> Log.e("AmplifyAuthSession", error.toString())
         );
 
-<<<<<<< HEAD
         // Intent to shift to Main Activity upon logging in successfully
         Intent loginIntent = new Intent(this, MainActivity.class);
 
         // Login button click -> sign in attempt -> show Main activity
-=======
-        Intent loginIntent = new Intent(this, MainActivity.class);
-
->>>>>>> origin/Auth
         loginButton = findViewById(R.id.login_button);
         loginButton.setOnClickListener(v -> {
             // Attempt to sign in
@@ -60,10 +53,5 @@ public class AuthActivity extends AppCompatActivity {
 
             startActivity(loginIntent);
         });
-<<<<<<< HEAD
-=======
-
-
->>>>>>> origin/Auth
     }
 }
