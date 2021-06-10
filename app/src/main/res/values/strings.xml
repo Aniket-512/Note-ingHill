@@ -1,3 +1,7 @@
 <resources>
     <string name="app_name">Note-ing Hill</string>
+    <string name="record_button_text">Record</string>
+    <string name="results_textview">Results</string>
+    <string name="stop_record_button">Stop</string>
+    <string name="convert_button_text">Convert</string>
 </resources>

@@ -39,6 +39,10 @@ dependencies {
 
     // AWS Amplify API, DataStore dependencies
     implementation 'com.amplifyframework:aws-api:1.17.4'
-    implementation 'com.amplifyframework:aws-datastore:1.17.4'
+    //implementation 'com.amplifyframework:aws-datastore:1.17.4'
     implementation 'com.amplifyframework:aws-auth-cognito:1.17.4'
+
+    // IBM Watson Speech-to-Text API
+    implementation 'com.ibm.watson:ibm-watson:9.0.2'
+    implementation 'com.arthenica:mobile-ffmpeg-full:4.4'
 }
