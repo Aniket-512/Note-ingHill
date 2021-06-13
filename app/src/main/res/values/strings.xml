@@ -3,5 +3,7 @@
     <string name="record_button_text">Record</string>
     <string name="results_textview">Results</string>
     <string name="stop_record_button">Stop</string>
-    <string name="convert_button_text">Convert</string>
+    <string name="upload_button_text">Upload</string>
+    <string name="stop_recording">Stop recording</string>
+    <string name="start_recording">Start recording</string>
 </resources>

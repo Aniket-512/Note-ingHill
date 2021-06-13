@@ -43,6 +43,12 @@ dependencies {
     implementation 'com.amplifyframework:aws-auth-cognito:1.17.4'
 
     // IBM Watson Speech-to-Text API
-    implementation 'com.ibm.watson:ibm-watson:9.0.2'
+    // implementation 'com.ibm.watson:ibm-watson:9.0.2'
     implementation 'com.arthenica:mobile-ffmpeg-full:4.4'
+
+    // AWS Transcribe
+    implementation 'com.amazonaws:aws-android-sdk-transcribe:2.25.0'
+
+    // AWS Admin Queries
+    implementation 'com.amazonaws:aws-android-sdk-apigateway-core:2.25.0'
 }
