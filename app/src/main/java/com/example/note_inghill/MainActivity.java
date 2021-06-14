@@ -9,8 +9,6 @@ import android.widget.Button;
 
 import com.amplifyframework.core.Amplify;
 
-import java.util.ArrayList;
-
 public class MainActivity extends AppCompatActivity {
 
     private Button signoutButton;
@@ -36,7 +34,7 @@ public class MainActivity extends AppCompatActivity {
         );*/
 
         // Sign out intent - move back to AuthActivity
-        Intent signoutIntent = new Intent(this, AuthActivity.class);
+        Intent signoutIntent = new Intent(this, LoginActivity.class);
 
         // Sign out using Amplify Auth when button clicked
         signoutButton = findViewById(R.id.signout_button);
