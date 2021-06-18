@@ -1,15 +1,15 @@
 {
   "dev": {
     "awscloudformation": {
-      "AuthRoleName": "amplify-noteinghill-dev-03918-authRole",
-      "UnauthRoleArn": "arn:aws:iam::652893551902:role/amplify-noteinghill-dev-03918-unauthRole",
-      "AuthRoleArn": "arn:aws:iam::652893551902:role/amplify-noteinghill-dev-03918-authRole",
+      "AuthRoleName": "amplify-noteinghill-dev-200138-authRole",
+      "UnauthRoleArn": "arn:aws:iam::652893551902:role/amplify-noteinghill-dev-200138-unauthRole",
+      "AuthRoleArn": "arn:aws:iam::652893551902:role/amplify-noteinghill-dev-200138-authRole",
       "Region": "ap-south-1",
-      "DeploymentBucketName": "amplify-noteinghill-dev-03918-deployment",
-      "UnauthRoleName": "amplify-noteinghill-dev-03918-unauthRole",
-      "StackName": "amplify-noteinghill-dev-03918",
-      "StackId": "arn:aws:cloudformation:ap-south-1:652893551902:stack/amplify-noteinghill-dev-03918/642ee9a0-b743-11eb-bf24-0217332ab114",
-      "AmplifyAppId": "d5x98jbedbpgw",
+      "DeploymentBucketName": "amplify-noteinghill-dev-200138-deployment",
+      "UnauthRoleName": "amplify-noteinghill-dev-200138-unauthRole",
+      "StackName": "amplify-noteinghill-dev-200138",
+      "StackId": "arn:aws:cloudformation:ap-south-1:652893551902:stack/amplify-noteinghill-dev-200138/642ee9a0-b743-11eb-bf24-0217332ab114",
+      "AmplifyAppId": "d3kvznkhh0qqw2",
       "AuthTriggerTemplateURL": ""
     },
     "categories": {

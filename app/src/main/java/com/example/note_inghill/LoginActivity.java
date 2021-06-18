@@ -14,29 +14,34 @@ import com.amplifyframework.AmplifyException;
 import com.amplifyframework.auth.cognito.AWSCognitoAuthPlugin;
 import com.amplifyframework.core.Amplify;
 
+import java.util.concurrent.atomic.AtomicInteger;
+
 public class LoginActivity extends AppCompatActivity {
 
     private Button loginButton;
     private Button registerButton;
-    private TextView userMobile; // Mobile number variable
-    private TextView userPassword; // Password variable
+    private TextView userEmail; // Mobile number UI field variable
+    private TextView userPassword; // Password UI field variable
+
+    private int counter = 3;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.login_activity);
 
+        // Intent to shift to Main Activity upon logging in successfully
+        Intent mainIntent = new Intent(this, MainActivity.class);
+
         // Amplify Auth plugin setup on device
         try {
             Amplify.addPlugin(new AWSCognitoAuthPlugin());
             Amplify.configure(getApplicationContext());
-            Log.i("AmplifyAuth", "Initialized Amplify Auth");
+            Log.i("Amplify", "Initialized Amplify plugins");
         } catch (AmplifyException error) {
-            Log.e("AmplifyAuth", "Could not initialize Amplify Auth", error);
+            Log.e("Amplify", "Could not initialize Amplify plugins", error);
         }
 
-        // Intent to shift to Main Activity upon logging in successfully
-        Intent mainIntent = new Intent(this, MainActivity.class);
         // Intent to shift to Register Activity in case of new user
         Intent registerIntent = new Intent(this, RegisterActivity.class);
 
@@ -44,38 +49,52 @@ public class LoginActivity extends AppCompatActivity {
         // If signed in -> show Main Activity
         Amplify.Auth.fetchAuthSession(
                 result -> {Log.i("AmplifyAuthSession", result.toString());
-                if(result.isSignedIn()) startActivity(mainIntent);},
+                if(result.isSignedIn())
+                    startActivity(mainIntent);},
                 error -> Log.e("AmplifyAuthSession", error.toString())
         );
 
         // Listen for click on Register button, if clicked move to -> Register Activity
-        registerButton = findViewById(R.id.register_button);
-        registerButton.setOnClickListener(v -> {
-            startActivity(registerIntent);
-        });
+        registerButton = findViewById(R.id.registerActivity_button);
+        registerButton.setOnClickListener(v -> startActivity(registerIntent));
 
-        // Connect variables to corresponding UI elements
-        userMobile = findViewById(R.id.phone_field_login);
-        userPassword = findViewById(R.id.password_field_login);
+        // Connect Java code variables to corresponding UI elements
+        userEmail = findViewById(R.id.email_login);
+        userPassword = findViewById(R.id.password_login);   // Test password -
 
         // Login button click -> sign in attempt -> show Main activity
-        loginButton = findViewById(R.id.login_button);
+        loginButton = findViewById(R.id.loginActivity_button);
         loginButton.setOnClickListener(v -> {
-            // Check if fields are not empty
-            if(TextUtils.isEmpty(userMobile.getText()))
-                Toast.makeText(this,"Please enter your Mobile Number",Toast.LENGTH_LONG).show();
-            else if(TextUtils.isEmpty(userPassword.getText()))
-                Toast.makeText(this, "Please enter your Password", Toast.LENGTH_LONG).show();
-
-            else if(!(userPassword.getText().toString().isEmpty() && userMobile.getText().toString().isEmpty())){
-                // Attempt to sign in
-                Amplify.Auth.signIn(
-                        userMobile.getText().toString(), userPassword.getText().toString(),
-                        result -> {Log.i("AmplifyAuth", result.isSignInComplete() ? "Sign in succeeded" : "Sign in not complete");
-                        if(result.isSignInComplete()) startActivity(mainIntent);},
-                        error -> Log.e("AmplifyAuth", error.toString())
-                );
-            }
+            attemptLogin();
         });
+    }
+
+    // Function to try logging in user
+    private void attemptLogin(){
+        // Check if fields are empty, toast accordingly
+        if(TextUtils.isEmpty(userEmail.getText()))
+            Toast.makeText(this,"Please enter your Email ID",Toast.LENGTH_LONG).show();
+        else if(TextUtils.isEmpty(userPassword.getText()))
+            Toast.makeText(this, "Please enter your Password", Toast.LENGTH_LONG).show();
+
+        // Test account credentials -
+        // Email - test@example.com
+        // Password - Test123@#
+
+        // If input fields are not empty, and max login attempts have not been made -> try to login user
+        else if(!(userPassword.getText().toString().isEmpty() && userEmail.getText().toString().isEmpty()) && counter!=0){
+            // Intent to shift to Main Activity upon logging in successfully
+            Intent mainIntent = new Intent(this, MainActivity.class);
+            // Attempt to sign in
+            Amplify.Auth.signIn(
+                    userEmail.getText().toString(), userPassword.getText().toString(),
+                    // Log result of sign in attempt, if successful move to MainActivity
+                    result -> {Log.i("AmplifyAuth", result.isSignInComplete() ? "Sign in  successful":"Sign in FAILED");
+                        if(result.isSignInComplete())
+                            startActivity(mainIntent);},
+                    error -> Log.e("AmplifyAuth", error.toString())
+            );
+            counter-=1;
+        }
     }
 }
