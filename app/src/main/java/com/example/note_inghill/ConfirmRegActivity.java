@@ -31,10 +31,10 @@ public class ConfirmRegActivity extends AppCompatActivity {
             assert !otpField.getText().toString().isEmpty();
             // No error handling yet
             Amplify.Auth.confirmSignUp(email, otpField.getText().toString(),
-                result -> {Log.i("AmplifyAuth", result.isSignUpComplete() ? "Confirm signUp succeeded" : "Confirm sign up not complete");
+                result -> {Log.i("AmplifyAuthConfirm", result.isSignUpComplete() ? "Confirm signUp succeeded" : "Confirm sign up not complete");
                     if(result.isSignUpComplete())
                         startActivity(mainIntent);},
-                error ->Log.e("AmplifyAuth", error.toString())
+                error ->Log.e("AmplifyAuthConfirm", error.toString())
             );
         });
     }

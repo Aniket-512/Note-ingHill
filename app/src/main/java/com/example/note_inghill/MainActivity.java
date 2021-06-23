@@ -12,6 +12,8 @@ import com.amplifyframework.core.Amplify;
 import com.amplifyframework.core.InitializationStatus;
 import com.amplifyframework.hub.HubChannel;
 
+// Main Activity only has a sign out button for now
+// Will show Lecture recording and Image-to-Text feature on this screen in future
 public class MainActivity extends AppCompatActivity {
 
     private Button signoutButton;
@@ -21,6 +23,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        // Unused, implementation remaining
         userStatus();
 
         // Sign out intent - move back to AuthActivity
@@ -38,6 +41,7 @@ public class MainActivity extends AppCompatActivity {
         });
     }
 
+    // Unused function, implementation remaining to return user auth status
     private void userStatus(){
         // AWS Cognito Auth Plugin sends important Auth events through Amplify Hub.
         Amplify.Hub.subscribe(HubChannel.AUTH,
@@ -49,16 +53,16 @@ public class MainActivity extends AppCompatActivity {
                     } else {
                         switch (AuthChannelEventName.valueOf(hubEvent.getName())) {
                             case SIGNED_IN:
-                                Log.i("AmplifyAuth", "Auth just became signed in.");
+                                Log.i("AmplifyAuthHub", "Auth just became signed in.");
                                 break;
                             case SIGNED_OUT:
-                                Log.i("AmplifyAuth", "Auth just became signed out.");
+                                Log.i("AmplifyAuthHub", "Auth just became signed out.");
                                 break;
                             case SESSION_EXPIRED:
-                                Log.i("AmplifyAuth", "Auth session just expired.");
+                                Log.i("AmplifyAuthHub", "Auth session just expired.");
                                 break;
                             default:
-                                Log.w("AmplifyAuth", "Unhandled Auth Event: " + AuthChannelEventName.valueOf(hubEvent.getName()));
+                                Log.w("AmplifyAuthHub", "Unhandled Auth Event: " + AuthChannelEventName.valueOf(hubEvent.getName()));
                                 break;
                         }
                     }

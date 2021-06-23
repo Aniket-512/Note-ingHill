@@ -14,16 +14,17 @@ import com.amplifyframework.AmplifyException;
 import com.amplifyframework.auth.cognito.AWSCognitoAuthPlugin;
 import com.amplifyframework.core.Amplify;
 
-import java.util.concurrent.atomic.AtomicInteger;
-
 public class LoginActivity extends AppCompatActivity {
+
+    // NOTE: Additional functionality+UI remaining - Forgot password
 
     private Button loginButton;
     private Button registerButton;
     private TextView userEmail; // Mobile number UI field variable
     private TextView userPassword; // Password UI field variable
 
-    private int counter = 3;
+    // Maximum number of login attempts
+    private int COUNTER;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,6 +33,9 @@ public class LoginActivity extends AppCompatActivity {
 
         // Intent to shift to Main Activity upon logging in successfully
         Intent mainIntent = new Intent(this, MainActivity.class);
+
+        // Set max number of login attempts
+        COUNTER=3;
 
         // Amplify Auth plugin setup on device
         try {
@@ -64,9 +68,7 @@ public class LoginActivity extends AppCompatActivity {
 
         // Login button click -> sign in attempt -> show Main activity
         loginButton = findViewById(R.id.loginActivity_button);
-        loginButton.setOnClickListener(v -> {
-            attemptLogin();
-        });
+        loginButton.setOnClickListener(v -> attemptLogin());
     }
 
     // Function to try logging in user
@@ -82,19 +84,21 @@ public class LoginActivity extends AppCompatActivity {
         // Password - Test123@#
 
         // If input fields are not empty, and max login attempts have not been made -> try to login user
-        else if(!(userPassword.getText().toString().isEmpty() && userEmail.getText().toString().isEmpty()) && counter!=0){
+        else if(!(userPassword.getText().toString().isEmpty() && userEmail.getText().toString().isEmpty()) && COUNTER !=0){
             // Intent to shift to Main Activity upon logging in successfully
             Intent mainIntent = new Intent(this, MainActivity.class);
             // Attempt to sign in
+            // Note: Username passed MUST be Email ID; name won't work.
             Amplify.Auth.signIn(
                     userEmail.getText().toString(), userPassword.getText().toString(),
                     // Log result of sign in attempt, if successful move to MainActivity
-                    result -> {Log.i("AmplifyAuth", result.isSignInComplete() ? "Sign in  successful":"Sign in FAILED");
+                    result -> {Log.i("AmplifyAuthLogin", result.isSignInComplete() ? "Sign in  successful":"Sign in FAILED");
                         if(result.isSignInComplete())
                             startActivity(mainIntent);},
-                    error -> Log.e("AmplifyAuth", error.toString())
+                    error -> Log.e("AmplifyAuthLogin", error.toString())
             );
-            counter-=1;
+            // Decrease number of tries
+            COUNTER -=1;
         }
     }
 }

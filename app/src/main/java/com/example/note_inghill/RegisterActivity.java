@@ -18,6 +18,7 @@ import com.google.android.material.snackbar.Snackbar;
 import java.util.ArrayList;
 
 public class RegisterActivity extends AppCompatActivity {
+    // Variables for corresponding UI elements
     private TextView nameField;
     private TextView emailField;
     private TextView mobileField;
@@ -32,6 +33,7 @@ public class RegisterActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_register);
 
+        // Intent to move back to Login Activity in case user is already registered
         Intent loginIntent = new Intent(this, LoginActivity.class);
 
         // Connect UI text fields to Java code
@@ -41,6 +43,7 @@ public class RegisterActivity extends AppCompatActivity {
         passwordField = findViewById(R.id.password_register);
         confirmPassField = findViewById(R.id.confirm_pass_reg);
 
+        // If user clicks Register button -> Try to register user
         registerButton = findViewById(R.id.registerUser_button);
         registerButton.setOnClickListener(v -> {
             try {
@@ -50,28 +53,29 @@ public class RegisterActivity extends AppCompatActivity {
             }
         });
 
+        // If user clicks Login button -> move back to Login Activity via intent
         loginButton = findViewById(R.id.loginActivity_button);
-        loginButton.setOnClickListener(v ->{
-            startActivity(loginIntent);
-        });
+        loginButton.setOnClickListener(v -> startActivity(loginIntent));
     }
 
     // Try registering user
     private void registerUser(){
-        // Verify non-empty user inputs
+        // Get user inputs
         String email = emailField.getText().toString();
-        if(email.isEmpty()) Toast.makeText(this,"Please enter your Email ID",Toast.LENGTH_LONG).show();
         String name = nameField.getText().toString();
-        if(name.isEmpty()) Toast.makeText(this,"Please enter your Name",Toast.LENGTH_LONG).show();
         String mobile = mobileField.getText().toString();
-        if(mobile.isEmpty()) Toast.makeText(this,"Please enter your Mobile Number",Toast.LENGTH_LONG).show();
         String password = passwordField.getText().toString();
-        if(password.isEmpty()) Toast.makeText(this, "Please enter a password",Toast.LENGTH_LONG).show();
         String confirmPass = confirmPassField.getText().toString();
-        if(confirmPass.isEmpty()) Toast.makeText(this, "Please confirm the password",Toast.LENGTH_LONG).show();
+
+        // Verify inputs are non-empty
+        if(email.isEmpty()) Toast.makeText(this,"Please enter your Email ID",Toast.LENGTH_LONG).show();
+        else if(name.isEmpty()) Toast.makeText(this,"Please enter your Name",Toast.LENGTH_LONG).show();
+        else if(mobile.isEmpty()) Toast.makeText(this,"Please enter your Mobile Number",Toast.LENGTH_LONG).show();
+        else if(password.isEmpty()) Toast.makeText(this, "Please enter a password",Toast.LENGTH_LONG).show();
+        else if(confirmPass.isEmpty()) Toast.makeText(this, "Please confirm the password",Toast.LENGTH_LONG).show();
 
         // Verify passwords match and non-empty user inputs
-        if(password.equals(confirmPass) && !(email.isEmpty() && mobile.isEmpty() && name.isEmpty() && password.isEmpty())){
+        if(password.equals(confirmPass) && !(email.isEmpty() || mobile.isEmpty() || name.isEmpty() || password.isEmpty())){
             // Store required user attributes for registering account - email, mobile, name
             ArrayList<AuthUserAttribute> attributes = new ArrayList<>();
             attributes.add(new AuthUserAttribute(AuthUserAttributeKey.email(), email));
