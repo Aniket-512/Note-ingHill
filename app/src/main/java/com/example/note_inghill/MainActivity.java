@@ -2,60 +2,71 @@ package com.example.note_inghill;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
+import android.widget.Button;
 
-import com.amplifyframework.AmplifyException;
-import com.amplifyframework.auth.AuthUserAttribute;
-import com.amplifyframework.auth.AuthUserAttributeKey;
-import com.amplifyframework.auth.cognito.AWSCognitoAuthPlugin;
-import com.amplifyframework.auth.options.AuthSignUpOptions;
+import com.amplifyframework.auth.AuthChannelEventName;
 import com.amplifyframework.core.Amplify;
+import com.amplifyframework.core.InitializationStatus;
+import com.amplifyframework.hub.HubChannel;
 
-import java.util.ArrayList;
-
+// Main Activity only has a sign out button for now
+// Will show Lecture recording and Image-to-Text feature on this screen in future
 public class MainActivity extends AppCompatActivity {
+
+    private Button signoutButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        try {
-            Amplify.addPlugin(new AWSCognitoAuthPlugin());
-            Amplify.configure(getApplicationContext());
-            Log.i("MyAmplifyApp", "Initialized Amplify Auth");
-        } catch (AmplifyException error) {
-            Log.e("MyAmplifyApp", "Could not initialize Amplify Auth", error);
-        }
+        // Unused, implementation remaining
+        userStatus();
 
-        // Check whether user is signed in or not
-        Amplify.Auth.fetchAuthSession(
-                result -> Log.i("AmplifyQuickstart", result.toString()),
-                error -> Log.e("AmplifyQuickstart", error.toString())
-        );
+        // Sign out intent - move back to AuthActivity
+        Intent signoutIntent = new Intent(this, LoginActivity.class);
 
-        /*
-        // Test account attributes
-        ArrayList<AuthUserAttribute> attributes = new ArrayList<>();
-        attributes.add(new AuthUserAttribute(AuthUserAttributeKey.email(), "aniket.ga8@gmail.com"));
-        attributes.add(new AuthUserAttribute(AuthUserAttributeKey.phoneNumber(), "+917022995558"));
+        // Sign out using Amplify Auth when button clicked
+        signoutButton = findViewById(R.id.signout_button);
+        signoutButton.setOnClickListener(v -> {
+            Amplify.Auth.signOut(
+                    () -> Log.i("AmplifyAuth", "Signed out successfully"),
+                    error -> Log.e("AmplifyAuth", error.toString())
+            );
+            // start AuthActivity (login)
+            startActivity(signoutIntent);
+        });
+    }
 
-        // Test account registration
-        Amplify.Auth.signUp(
-                "aniket.ga8@gmail.com",
-                "Pass1234!",
-                AuthSignUpOptions.builder().userAttributes(attributes).build(),
-                result -> Log.i("AuthQuickstart", result.toString()),
-                error -> Log.e("AuthQuickstart", error.toString())
-        );*/
-
-        // Attempt to sign in
-        Amplify.Auth.signIn(
-                "aniket.ga8@gmail.com",
-                "Pass1234!",
-                result -> Log.i("AuthQuickstart", result.isSignInComplete() ? "Sign in succeeded" : "Sign in not complete"),
-                error -> Log.e("AuthQuickstart", error.toString())
+    // Unused function, implementation remaining to return user auth status
+    private void userStatus(){
+        // AWS Cognito Auth Plugin sends important Auth events through Amplify Hub.
+        Amplify.Hub.subscribe(HubChannel.AUTH,
+                hubEvent -> {
+                    if (hubEvent.getName().equals(InitializationStatus.SUCCEEDED.toString())) {
+                        Log.i("AmplifyAuthHub", "Auth Hub successfully initialized");
+                    } else if (hubEvent.getName().equals(InitializationStatus.FAILED.toString())){
+                        Log.i("AmplifyAuthHub", "Auth Hub failed to succeed");
+                    } else {
+                        switch (AuthChannelEventName.valueOf(hubEvent.getName())) {
+                            case SIGNED_IN:
+                                Log.i("AmplifyAuthHub", "Auth just became signed in.");
+                                break;
+                            case SIGNED_OUT:
+                                Log.i("AmplifyAuthHub", "Auth just became signed out.");
+                                break;
+                            case SESSION_EXPIRED:
+                                Log.i("AmplifyAuthHub", "Auth session just expired.");
+                                break;
+                            default:
+                                Log.w("AmplifyAuthHub", "Unhandled Auth Event: " + AuthChannelEventName.valueOf(hubEvent.getName()));
+                                break;
+                        }
+                    }
+                }
         );
     }
 }

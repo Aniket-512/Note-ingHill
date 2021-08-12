@@ -1,3 +1,23 @@
 <resources>
     <string name="app_name">Note-ing Hill</string>
+    <string name="login_button_text">Login</string>
+    <string name="signout_button_text">Sign Out</string>
+    <string name="password_hint">Password</string>
+    <string name="email_hint">Email</string>
+    <string name="mobile_hint">Mobile</string>
+    <string name="register_button">Register</string>
+    <string name="new_register">New user?</string>
+    <string name="title_activity_register">RegisterActivity</string>
+    <string name="prompt_email">Email</string>
+    <string name="prompt_password">Password</string>
+    <string name="welcome">"Welcome !"</string>
+    <string name="invalid_username">Not a valid username</string>
+    <string name="invalid_password">Password must be 8 characters or more</string>
+    <string name="login_failed">"Login failed"</string>
+    <string name="name_hint">Name</string>
+    <string name="confirm_hint">Confirm Password</string>
+    <string name="alreadyUser_hint">Already a user?</string>
+    <string name="confirm_button_text">Confirm</string>
+    <string name="enter_otp">Enter OTP received via Email:</string>
+    <string name="otp_hint">123456</string>
 </resources>
