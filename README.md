@@ -7,12 +7,12 @@
 - git v2.14.1 or later
 
 ### 2. Open Terminal
-Run `npm install -g @aws-amplify/cli`
+- Run `npm install -g @aws-amplify/cli`
 (Global installation of AWS Amplify CLI)
-Run `amplify configure`
-Sign in with your AWS credentials on the browser and then press enter in terminal
-Select ap-south-1
-Set a new user name (At this point, it is recommended to call Aniketh. A new IAM user will be created. That will need granting permissions. Aniketh will take the reins from here!)
+- Run `amplify configure`
+- Sign in with your AWS credentials on the browser and then press enter in terminal
+- Select ap-south-1
+- Set a new user name (At this point, it is recommended to call Aniketh. A new IAM user will be created. That will need granting permissions. Aniketh will take the reins from here!)
 
 ### 3. Open Android Studio
 - Select "Get from Version Control"
