@@ -15,7 +15,7 @@ import com.amplifyframework.hub.HubChannel;
 // Main Activity only has a sign out button for now
 // Will show Lecture recording and Image-to-Text feature on this screen in future
 public class MainActivity extends AppCompatActivity {
-
+//Password : Ronaldoidol#7
     private Button signoutButton;
 
     @Override
