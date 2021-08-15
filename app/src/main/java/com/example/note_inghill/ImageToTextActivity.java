@@ -25,11 +25,10 @@ public class ImageToTextActivity extends AppCompatActivity {
         // - On upload to S3 bucket, a lambda function is triggered which then performs OCR.
 
     // Additional Feature would be to provide a gallery option as well.
-    
-    static final int REQUEST_IMAGE_CAPTURE = 1;
+
     
     // XML Asset Declarations
-    private Button openGallery;
+    private Button openGallery, uploadButton;
     private ImageView imageView;
 
     
@@ -38,14 +37,14 @@ public class ImageToTextActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_image_to_text);
         
-        //Button Declarations
+        // Button Declarations
         openGallery = findViewById(R.id.Gallery_open_button);
+        uploadButton = findViewById(R.id.Upload_image_button);
 
-        //Crop Image View
+        // Image View
         imageView = findViewById(R.id.imageView2);
 
-
-        // Open Gallery
+        // Open Gallery : Opens a image picker which is native to the OS.
         openGallery.setOnClickListener(v-> {
             startCropActivity();
         });
