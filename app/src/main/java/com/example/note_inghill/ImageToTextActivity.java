@@ -11,6 +11,8 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.Toast;
 
+import com.theartofdev.edmodo.cropper.CropImageView;
+
 public class ImageToTextActivity extends AppCompatActivity {
 
     // This Activity is responsible for handling Image to Text.
@@ -26,6 +28,8 @@ public class ImageToTextActivity extends AppCompatActivity {
     // XML Asset Declarations
     private Button openCamera, openGallery;
     private ImageView imageView;
+
+    private CropImageView mCropImageView;
     
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,6 +39,9 @@ public class ImageToTextActivity extends AppCompatActivity {
         //Button Declarations
         openCamera = findViewById(R.id.Camera_open_button);
         openGallery = findViewById(R.id.Gallery_open_button);
+
+        //Crop Image View
+        mCropImageView = (CropImageView) findViewById(R.id.cropImageView);
         
         //Open camera onClick Listener
         openCamera.setOnClickListener(v -> {
@@ -71,7 +78,7 @@ public class ImageToTextActivity extends AppCompatActivity {
         if (requestCode == REQUEST_IMAGE_CAPTURE && resultCode == RESULT_OK) {
             Bundle extras = data.getExtras();
             Bitmap imageBitmap = (Bitmap) extras.get("data");
-            imageView.setImageBitmap(imageBitmap);
+            mCropImageView.setImageBitmap(imageBitmap);
         }
     }
 }
