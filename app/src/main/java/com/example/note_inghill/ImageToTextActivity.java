@@ -11,12 +11,13 @@ public class ImageToTextActivity extends AppCompatActivity {
         // - The Upload button will run amplify function to connect and upload image to S3
         // - On upload to S3 bucket, a lambda function is triggered which then performs OCR.
 
+    // Additional Feature would be to provide a gallery option as well.
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_image_to_text);
 
-        
+
 
     }
 }
