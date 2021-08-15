@@ -19,6 +19,7 @@
 - Link GitHub account using login or token (Access token is most likely to work)
 - Paste GitHub repo URL: `https://github.com/Aniket-512/Note-ingHill/`
 - Click "Clone"
+- Use an emulator that runs Android 9. Android 10 has camera problems.
 
 ### Tips
 - Run Android Studio as a Root user (Linux) or as an Administrator (Windows).
