@@ -16,6 +16,7 @@ import com.amplifyframework.hub.HubChannel;
 // Will show Lecture recording and Image-to-Text feature on this screen in future
 public class MainActivity extends AppCompatActivity {
 //Password : Ronaldoidol#7
+    // Vishnu's Work Branch
     private Button signoutButton;
 
     @Override
