@@ -49,4 +49,5 @@ dependencies {
 
     // ArthurHub Image Cropper
     api 'com.theartofdev.edmodo:android-image-cropper:2.8.+'
+    implementation 'com.github.CanHub:Android-Image-Cropper:3.2.2'
 }

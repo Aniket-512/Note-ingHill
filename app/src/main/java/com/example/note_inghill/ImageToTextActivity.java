@@ -5,12 +5,15 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.ActivityNotFoundException;
 import android.content.Intent;
 import android.graphics.Bitmap;
+import android.net.Uri;
 import android.os.Bundle;
 import android.provider.MediaStore;
+import android.util.Log;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.Toast;
 
+import com.theartofdev.edmodo.cropper.CropImage;
 import com.theartofdev.edmodo.cropper.CropImageView;
 
 public class ImageToTextActivity extends AppCompatActivity {
@@ -26,10 +29,9 @@ public class ImageToTextActivity extends AppCompatActivity {
     static final int REQUEST_IMAGE_CAPTURE = 1;
     
     // XML Asset Declarations
-    private Button openCamera, openGallery;
+    private Button openGallery;
     private ImageView imageView;
 
-    private CropImageView mCropImageView;
     
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,48 +39,38 @@ public class ImageToTextActivity extends AppCompatActivity {
         setContentView(R.layout.activity_image_to_text);
         
         //Button Declarations
-        openCamera = findViewById(R.id.Camera_open_button);
         openGallery = findViewById(R.id.Gallery_open_button);
 
         //Crop Image View
-        mCropImageView = (CropImageView) findViewById(R.id.cropImageView);
-        
-        //Open camera onClick Listener
-        openCamera.setOnClickListener(v -> {
-            dispatchTakePictureIntent();
-        });
+        imageView = findViewById(R.id.imageView2);
+
 
         // Open Gallery
         openGallery.setOnClickListener(v-> {
-            dispatchOpenGalleryIntent();
+            startCropActivity();
         });
 
     }
 
-    //Function to pick image from gallery
-    private void dispatchOpenGalleryIntent() {
-        Intent pickPhoto = new Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
-        startActivityForResult(pickPhoto, 1);
+    private void startCropActivity() {
+        CropImage.activity()
+                .setGuidelines(CropImageView.Guidelines.ON)
+                .start(this);
     }
-
-    //Function to take an image with hardware camera
-    private void dispatchTakePictureIntent() {
-        Intent takePictureIntent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
-        try {
-            startActivityForResult(takePictureIntent, REQUEST_IMAGE_CAPTURE);
-        } catch (ActivityNotFoundException e) {
-            Toast.makeText(this, "Unable to Open Camera", Toast.LENGTH_SHORT).show();
-        }
-    }
-
 
     @Override
-    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+    public void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-        if (requestCode == REQUEST_IMAGE_CAPTURE && resultCode == RESULT_OK) {
-            Bundle extras = data.getExtras();
-            Bitmap imageBitmap = (Bitmap) extras.get("data");
-            mCropImageView.setImageBitmap(imageBitmap);
+        if (requestCode == CropImage.CROP_IMAGE_ACTIVITY_REQUEST_CODE) {
+            CropImage.ActivityResult result = CropImage.getActivityResult(data);
+            if (resultCode == RESULT_OK) {
+                Uri resultUri = result.getUri(); // Result uri holds the cropped image
+                imageView.setImageURI(resultUri);
+            } else if (resultCode == CropImage.CROP_IMAGE_ACTIVITY_RESULT_ERROR_CODE) {
+                Exception error = result.getError();
+                Log.d("Crop Image Error ", error.toString());
+            }
         }
     }
+
 }
