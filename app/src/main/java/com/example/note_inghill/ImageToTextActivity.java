@@ -5,16 +5,13 @@ import static android.Manifest.permission.WRITE_EXTERNAL_STORAGE;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
 
-import android.Manifest;
-import android.content.ActivityNotFoundException;
+
 import android.content.ContentUris;
 import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.database.Cursor;
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
-import android.graphics.drawable.BitmapDrawable;
+
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
@@ -24,24 +21,15 @@ import android.provider.MediaStore;
 import android.util.Log;
 import android.widget.Button;
 import android.widget.ImageView;
-import android.widget.Toast;
 
-import com.amazonaws.mobileconnectors.cognitoauth.Auth;
 import com.amplifyframework.core.Amplify;
 import com.theartofdev.edmodo.cropper.CropImage;
 import com.theartofdev.edmodo.cropper.CropImageView;
-
-import java.io.ByteArrayOutputStream;
 import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
 import java.io.IOException;
-import java.io.OutputStream;
-import java.net.URI;
-import java.net.URISyntaxException;
+
 
 public class ImageToTextActivity extends AppCompatActivity {
-    private static final String TAG = "Image Debug";
 
     // This Activity is responsible for handling Image to Text.
     // The screen will contain a camera view and an upload button.
@@ -51,12 +39,12 @@ public class ImageToTextActivity extends AppCompatActivity {
 
     // Additional Feature would be to provide a gallery option as well.
 
-    
+
     // XML Asset Declarations
     private Button openGallery, uploadButton;
     private ImageView imageView;
 
-    private String directory = Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_PICTURES) + "/images";
+    //Global Variables
     String imageUri = "";
 
     
@@ -75,19 +63,15 @@ public class ImageToTextActivity extends AppCompatActivity {
         imageView = findViewById(R.id.imageView2);
 
         // Open Gallery : Opens a image picker which is native to the OS.
-        openGallery.setOnClickListener(v-> {
-            startCropActivity();
-
-        });
+        openGallery.setOnClickListener(v-> startCropActivity());
 
         uploadButton.setOnClickListener(v-> {
             try {
-                Log.d("URI String", imageUri);
-                String imagePath = getPathFromUri(this, Uri.parse(imageUri));
+
+                String imagePath = getPathFromUri(this, Uri.parse(imageUri)); //Gets the real path of the file
                 Log.d("URI Real Path", imagePath);
 
                 saveToGallery(imagePath);
-
             } catch (IOException e) {
                 e.printStackTrace();
             }
@@ -97,10 +81,13 @@ public class ImageToTextActivity extends AppCompatActivity {
 
     private void saveToGallery(String imagePath) throws IOException {
 
-        File f = new File(imagePath);
+        //Input : imagePath : the real path of the image file
 
+        File f = new File(imagePath); // Retrieves the file from the directory
+
+        //Amplify code to upload image to S3
         Amplify.Storage.uploadFile(
-                "ExampleKey",
+                "ExampleKey", //Need to configure Key correctly
                 f,
                 result -> Log.i("MyAmplifyApp", "Successfully uploaded: " + result.getKey()),
                 storageFailure -> Log.e("MyAmplifyApp", "Upload failed", storageFailure)
@@ -108,6 +95,7 @@ public class ImageToTextActivity extends AppCompatActivity {
     }
 
     private void startCropActivity() {
+        // Function that begins the crop activity
         CropImage.activity()
                 .setGuidelines(CropImageView.Guidelines.ON)
                 .start(this);
@@ -120,12 +108,11 @@ public class ImageToTextActivity extends AppCompatActivity {
             CropImage.ActivityResult result = CropImage.getActivityResult(data);
             if (resultCode == RESULT_OK) {
                 Uri resultUri = result.getUri(); // Result uri holds the cropped image
-                imageView.setImageURI(resultUri);
+                imageView.setImageURI(resultUri); // Setting imageView with the chosen cropped picture
 
                 Log.d("URI", resultUri.toString());
 
-                imageUri = resultUri.toString();
-
+                imageUri = resultUri.toString(); // Assigning global variable the uri converted as string
             } else if (resultCode == CropImage.CROP_IMAGE_ACTIVITY_RESULT_ERROR_CODE) {
                 Exception error = result.getError();
                 Log.d("Crop Image Error ", error.toString());
@@ -133,6 +120,7 @@ public class ImageToTextActivity extends AppCompatActivity {
         }
     }
 
+    // Stack overflow code that converts URI to real path
     public static String getPathFromUri(final Context context, final Uri uri) {
 
         final boolean isKitKat = Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT;
@@ -222,7 +210,6 @@ public class ImageToTextActivity extends AppCompatActivity {
         }
         return null;
     }
-
 
     /**
      * @param uri The Uri to check.
