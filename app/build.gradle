@@ -46,6 +46,7 @@ dependencies {
     // AWS Amplify API, DataStore dependencies
     implementation 'com.amplifyframework:aws-api:1.17.4'
     implementation 'com.amplifyframework:aws-auth-cognito:1.17.4'
+    implementation 'com.amplifyframework:aws-storage-s3:1.24.0' //S3 Storage Plugin
 
     // ArthurHub Image Cropper
     api 'com.theartofdev.edmodo:android-image-cropper:2.8.+'
