@@ -20,6 +20,7 @@ public class MainActivity extends AppCompatActivity {
 
     private Button signoutButton;
     private Button imageToText; // Button press loads new activity
+    private Button textSummarization;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,6 +35,13 @@ public class MainActivity extends AppCompatActivity {
         imageToText = findViewById(R.id.imageToTextId);
         imageToText.setOnClickListener(v -> {
             Intent intent = new Intent(this, ImageToTextActivity.class);
+            startActivity(intent);
+        });
+
+        //Text summarization button
+        textSummarization = findViewById(R.id.TextSummButton);
+        textSummarization.setOnClickListener(v -> {
+            Intent intent = new Intent(this, TextSummActivity.class);
             startActivity(intent);
         });
 
