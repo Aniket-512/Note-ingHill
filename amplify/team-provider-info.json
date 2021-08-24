@@ -1,0 +1,29 @@
+{
+  "dev": {
+    "awscloudformation": {
+      "AuthRoleName": "amplify-noteinghill-dev-200138-authRole",
+      "UnauthRoleArn": "arn:aws:iam::652893551902:role/amplify-noteinghill-dev-200138-unauthRole",
+      "AuthRoleArn": "arn:aws:iam::652893551902:role/amplify-noteinghill-dev-200138-authRole",
+      "Region": "ap-south-1",
+      "DeploymentBucketName": "amplify-noteinghill-dev-200138-deployment",
+      "UnauthRoleName": "amplify-noteinghill-dev-200138-unauthRole",
+      "StackName": "amplify-noteinghill-dev-200138",
+      "StackId": "arn:aws:cloudformation:ap-south-1:652893551902:stack/amplify-noteinghill-dev-200138/bd4bc350-cac1-11eb-84a5-022cf644df5a",
+      "AmplifyAppId": "d3kvznkhh0qqw2",
+      "AuthTriggerTemplateURL": ""
+    },
+    "categories": {
+      "auth": {
+        "noteinghillbecdb921": {},
+        "userPoolGroups": {},
+        "noteinghillauth": {}
+      },
+      "function": {
+        "AdminQueriese47b5f71": {
+          "deploymentBucketName": "amplify-noteinghill-dev-200138-deployment",
+          "s3Key": "amplify-builds/AdminQueriese47b5f71-75564f41584e70564d66-build.zip"
+        }
+      }
+    }
+  }
+}
