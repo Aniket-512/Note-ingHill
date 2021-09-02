@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
 import android.widget.Button;
 
 import com.amplifyframework.auth.AuthChannelEventName;
@@ -16,18 +17,25 @@ import com.amplifyframework.hub.HubChannel;
 // Will show Lecture recording and Image-to-Text feature on this screen in future
 public class MainActivity extends AppCompatActivity {
 //Password : Ronaldoidol#7
+
     private Button signoutButton;
+    private Button imageToText; // Button press loads new activity
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
         // Unused, implementation remaining
         userStatus();
-
         // Sign out intent - move back to AuthActivity
         Intent signoutIntent = new Intent(this, LoginActivity.class);
+
+        //Image to Text Button
+        imageToText = findViewById(R.id.imageToTextId);
+        imageToText.setOnClickListener(v -> {
+            Intent intent = new Intent(this, ImageToTextActivity.class);
+            startActivity(intent);
+        });
 
         // Sign out using Amplify Auth when button clicked
         signoutButton = findViewById(R.id.signout_button);

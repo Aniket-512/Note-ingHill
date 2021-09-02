@@ -25,4 +25,3 @@
 - Run Android Studio as a Root user (Linux) or as an Administrator (Windows).
 - (For Windows only) Check your path variables. If node path is not present, add it to your path.
 - (For Windows Only) If you get a EEXIST: File already exists error, make sure you contact Vishnu. In your C:/Users/<UserName> path, your username has a space. Refer to this link : https://docs.microsoft.com/en-US/troubleshoot/windows-client/user-profiles-and-logon/renaming-user-account-not-change-profile-path
-- Do not update anything unless it is absolutely necessary. (Updating IDE is fine, but ask before you update gradle versions. Incorrect gradel versions will not be compatible in VC)
