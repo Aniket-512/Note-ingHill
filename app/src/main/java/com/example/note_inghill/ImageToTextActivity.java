@@ -27,6 +27,7 @@ import com.theartofdev.edmodo.cropper.CropImage;
 import com.theartofdev.edmodo.cropper.CropImageView;
 import java.io.File;
 import java.io.IOException;
+import java.util.UUID;
 
 
 public class ImageToTextActivity extends AppCompatActivity {
@@ -41,7 +42,7 @@ public class ImageToTextActivity extends AppCompatActivity {
 
 
     // XML Asset Declarations
-    private Button openGallery, uploadButton;
+    private Button openGallery, uploadButton, summarizeButton;
     private ImageView imageView;
 
     //Global Variables
@@ -58,6 +59,7 @@ public class ImageToTextActivity extends AppCompatActivity {
         // Button Declarations
         openGallery = findViewById(R.id.Gallery_open_button);
         uploadButton = findViewById(R.id.Upload_image_button);
+        summarizeButton = findViewById(R.id.Summarize);
 
         // Image View
         imageView = findViewById(R.id.imageView2);
@@ -72,9 +74,18 @@ public class ImageToTextActivity extends AppCompatActivity {
                 Log.d("URI Real Path", imagePath);
 
                 saveToGallery(imagePath);
+
+                //Async Await
             } catch (IOException e) {
                 e.printStackTrace();
             }
+        });
+
+        summarizeButton.setOnClickListener(v->{
+            Intent intent = new Intent(this, TextSummarization.class);
+            //intent.putExtra("ImageName", "im2.jpg");
+
+            startActivity(intent);
         });
 
     }
@@ -84,15 +95,17 @@ public class ImageToTextActivity extends AppCompatActivity {
         //Input : imagePath : the real path of the image file
 
         File f = new File(imagePath); // Retrieves the file from the directory
-
+        String uuid = UUID.randomUUID().toString();
         //Amplify code to upload image to S3
         Amplify.Storage.uploadFile(
-                "im2.jpg", //Need to configure Key correctly
+                "im2.jpg", //Amplify.Auth.getCurrentUser().getUserId()+"/"+uuid+".jpg"
                 f,
                 result -> Log.i("MyAmplifyApp", "Successfully uploaded: " + result.getKey()),
                 storageFailure -> Log.e("MyAmplifyApp", "Upload failed", storageFailure)
         );
     }
+
+
 
     private void startCropActivity() {
         // Function that begins the crop activity

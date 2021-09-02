@@ -21,12 +21,13 @@
         android:id="@+id/Upload_image_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginStart="52dp"
         android:layout_marginBottom="16dp"
         android:text="Upload Image"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/Gallery_open_button" />
+        app:layout_constraintTop_toBottomOf="@+id/Gallery_open_button"
+        app:layout_constraintVertical_bias="0.454" />
 
     <ImageView
         android:id="@+id/imageView2"
@@ -38,4 +39,16 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@android:drawable/ic_menu_report_image" />
+
+    <Button
+        android:id="@+id/Summarize"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="56dp"
+        android:layout_marginBottom="52dp"
+        android:text="Summarize"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toEndOf="@+id/Upload_image_button" />
 </androidx.constraintlayout.widget.ConstraintLayout>

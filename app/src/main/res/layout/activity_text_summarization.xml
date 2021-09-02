@@ -7,6 +7,7 @@
     tools:context=".TextSummarization">
 
     <RadioGroup
+        android:id="@+id/radioGroup"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="100dp"
@@ -23,21 +24,21 @@
             android:id="@+id/shortSummaryButton"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:padding="10"
+            android:padding="10dp"
             android:text="Short Summary" />
 
         <RadioButton
             android:id="@+id/mediumSummaryButton"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:padding="10"
+            android:padding="10dp"
             android:text="Medium Summary" />
 
         <RadioButton
             android:id="@+id/longSummaryButton"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:padding="10"
+            android:padding="10dp"
             android:text="Long Summary" />
     </RadioGroup>
 
@@ -45,10 +46,23 @@
         android:id="@+id/SubmitTextSumTypeButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="72dp"
+        android:layout_marginTop="190dp"
         android:text="Text Summarization"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/radioGroup" />
+
+    <Button
+        android:id="@+id/downloadButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:text="Download File"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/SubmitTextSumTypeButton"
+        app:layout_constraintVertical_bias="0.037" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
