@@ -32,9 +32,9 @@ public class TextSummarization extends AppCompatActivity {
 
         //Radio Buttons Declaration Configuration
         radioGroup = findViewById(R.id.radioGroup);
-        ShortSum = (RadioButton) findViewById(R.id.shortSummaryButton);
-        MedSum = (RadioButton) findViewById(R.id.mediumSummaryButton);
-        LongSum = (RadioButton) findViewById(R.id.longSummaryButton);
+        ShortSum = findViewById(R.id.shortSummaryButton);
+        MedSum = findViewById(R.id.mediumSummaryButton);
+        LongSum = findViewById(R.id.longSummaryButton);
 
         submitButton = findViewById(R.id.SubmitTextSumTypeButton);
         downloadButton = findViewById(R.id.downloadButton);
@@ -63,7 +63,6 @@ public class TextSummarization extends AppCompatActivity {
 //            );
 
         });
-
 
 
     }
