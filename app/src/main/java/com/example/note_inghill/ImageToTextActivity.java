@@ -87,7 +87,7 @@ public class ImageToTextActivity extends AppCompatActivity {
 
         //Amplify code to upload image to S3
         Amplify.Storage.uploadFile(
-                "ExampleKey", //Need to configure Key correctly
+                "im2.jpg", //Need to configure Key correctly
                 f,
                 result -> Log.i("MyAmplifyApp", "Successfully uploaded: " + result.getKey()),
                 storageFailure -> Log.e("MyAmplifyApp", "Upload failed", storageFailure)
