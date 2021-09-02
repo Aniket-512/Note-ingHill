@@ -9,6 +9,7 @@
     <RadioGroup
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="100dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
@@ -17,6 +18,37 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
+
+        <RadioButton
+            android:id="@+id/shortSummaryButton"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="10"
+            android:text="Short Summary" />
+
+        <RadioButton
+            android:id="@+id/mediumSummaryButton"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="10"
+            android:text="Medium Summary" />
+
+        <RadioButton
+            android:id="@+id/longSummaryButton"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="10"
+            android:text="Long Summary" />
     </RadioGroup>
-    
+
+    <Button
+        android:id="@+id/SubmitTextSumTypeButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="72dp"
+        android:text="Text Summarization"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>
