@@ -40,9 +40,9 @@ public class TextSummarization extends AppCompatActivity {
         downloadButton = findViewById(R.id.downloadButton);
 
         submitButton.setOnClickListener(v-> {
-            String result = "Selected Course: ";
-            result+= (ShortSum.isChecked())?"Short Summary":(MedSum.isChecked())?"Medium Summary":(LongSum.isChecked())?"Long Summary":"";
-            Toast.makeText(getApplicationContext(), result, Toast.LENGTH_SHORT).show();
+            //String result = "Selected Course: ";
+            String result = (ShortSum.isChecked())?"Short Summary":(MedSum.isChecked())?"Medium Summary":(LongSum.isChecked())?"Long Summary":"";
+            //Toast.makeText(getApplicationContext(), result, Toast.LENGTH_SHORT).show();
         });
 
         //Amplify
