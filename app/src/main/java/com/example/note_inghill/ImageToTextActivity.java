@@ -41,8 +41,6 @@ public class ImageToTextActivity extends AppCompatActivity {
     // Additional Feature would be to provide a gallery option as well.
 
 
-    // XML Asset Declarations
-    private Button openGallery, uploadButton, summarizeButton;
     private ImageView imageView;
 
     //Global Variables
@@ -57,9 +55,10 @@ public class ImageToTextActivity extends AppCompatActivity {
         ActivityCompat.requestPermissions(this, new String[]{WRITE_EXTERNAL_STORAGE}, PackageManager.PERMISSION_GRANTED);
         
         // Button Declarations
-        openGallery = findViewById(R.id.Gallery_open_button);
-        uploadButton = findViewById(R.id.Upload_image_button);
-        summarizeButton = findViewById(R.id.Summarize);
+        // XML Asset Declarations
+        Button openGallery = findViewById(R.id.Gallery_open_button);
+        Button uploadButton = findViewById(R.id.Upload_image_button);
+        Button summarizeButton = findViewById(R.id.Summarize);
 
         // Image View
         imageView = findViewById(R.id.imageView2);
