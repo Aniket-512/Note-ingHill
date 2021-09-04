@@ -2,20 +2,12 @@ package com.example.note_inghill;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.app.DownloadManager;
 import android.os.Bundle;
-import android.os.Environment;
-import android.util.Log;
-import android.view.View;
 import android.widget.Button;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.Toast;
 
-import com.amplifyframework.core.Amplify;
-import com.amplifyframework.storage.options.StorageDownloadFileOptions;
-
-import java.io.File;
 
 public class TextSummarization extends AppCompatActivity {
 
