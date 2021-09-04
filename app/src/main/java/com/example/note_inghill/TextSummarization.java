@@ -22,7 +22,7 @@ public class TextSummarization extends AppCompatActivity {
     RadioGroup radioGroup;
     RadioButton ShortSum, MedSum, LongSum;
 
-    Button submitButton, downloadButton;
+    Button submitButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,55 +37,38 @@ public class TextSummarization extends AppCompatActivity {
         LongSum = findViewById(R.id.longSummaryButton);
 
         submitButton = findViewById(R.id.SubmitTextSumTypeButton);
-        downloadButton = findViewById(R.id.downloadButton);
 
         submitButton.setOnClickListener(v-> {
             //String result = "Selected Course: ";
             String result = (ShortSum.isChecked())?"Short Summary":(MedSum.isChecked())?"Medium Summary":(LongSum.isChecked())?"Long Summary":"";
             //Toast.makeText(getApplicationContext(), result, Toast.LENGTH_SHORT).show();
-        });
-
-        //Amplify
-        downloadButton.setOnClickListener(v -> {
-            Amplify.Storage.downloadFile(
-                    "TextOutput.txt",
-                    new File(Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS) + "/TextOutput.txt"),
-                    result ->  Log.i("MyAmplifyApp", "Successfully downloaded: " + result.getFile().getName()),
-                    error -> Log.e("MyAmplifyApp",  "Download Failure", error)
-            );
-
-            //Getting Download URL :
-//            String resultUrl;
-//            Amplify.Storage.getUrl(
-//                    "TextOutput.txt",
-//                    result -> Log.i("MyAmplifyApp", "Successfully generated: " + result.getUrl()),
-//                    error -> Log.e("MyAmplifyApp", "URL generation failure", error)
-//            );
-
+            if(result.equals("Short Summary")){
+                amplify_download_summary("S");
+            }
+            if(result.equals("Medium Summary")){
+                amplify_download_summary("M");
+            }
+            if(result.equals("Long Summary")){
+                amplify_download_summary("L");
+            }
+            if(result.isEmpty()){
+                Toast.makeText(this, "Please Select a Type of Summary", Toast.LENGTH_SHORT).show();
+            }
         });
 
 
     }
 
-    public void onRadioButtonClicked(View view) {
-        boolean checked = ((RadioButton) view).isChecked();
-        String str="";
-        // Check which radio button was clicked
-        switch(view.getId()) {
-            case R.id.shortSummaryButton:
-                if(checked)
-                    str = "Android Selected";
-                break;
-            case R.id.mediumSummaryButton:
-                if(checked)
-                    str = "AngularJS Selected";
-                break;
-            case R.id.longSummaryButton:
-                if(checked)
-                    str = "Java Selected";
-                break;
-        }
-        Toast.makeText(getApplicationContext(), str, Toast.LENGTH_SHORT).show();
+    private void amplify_download_summary(String sumType) {
+
+//        Amplify.Storage.downloadFile(
+//                "TextOutput" + sumType + ".txt",
+//                new File(Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS) + "/TextOutput.txt"),
+//                result ->  Log.i("MyAmplifyApp", "Successfully downloaded: " + result.getFile().getName()),
+//                error -> Log.e("MyAmplifyApp",  "Download Failure", error)
+//        );
+        Toast.makeText(this, "TextOutput" + sumType + ".txt Downloaded", Toast.LENGTH_SHORT).show();
     }
+
 
 }
