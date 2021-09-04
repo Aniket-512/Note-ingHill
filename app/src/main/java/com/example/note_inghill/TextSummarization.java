@@ -30,10 +30,10 @@ public class TextSummarization extends AppCompatActivity {
 
         submitButton = findViewById(R.id.SubmitTextSumTypeButton);
 
+        //Based on the type of summary selected, we simply download the relevant file from S3.
+        // Note : All 3 types of summarization is done on upload of file. We are simply downloading the necessary one.
         submitButton.setOnClickListener(v-> {
-            //String result = "Selected Course: ";
             String result = (ShortSum.isChecked())?"Short Summary":(MedSum.isChecked())?"Medium Summary":(LongSum.isChecked())?"Long Summary":"";
-            //Toast.makeText(getApplicationContext(), result, Toast.LENGTH_SHORT).show();
             if(result.equals("Short Summary")){
                 amplify_download_summary("S");
             }
@@ -51,15 +51,16 @@ public class TextSummarization extends AppCompatActivity {
 
     }
 
+    // Function to stop repeating code. Based on type, Amplify is asked to download from S3 based on the file name.
     private void amplify_download_summary(String sumType) {
-
+// Amplify Code will be uncommented once the summarization code is hosted on AWS.
 //        Amplify.Storage.downloadFile(
 //                "TextOutput" + sumType + ".txt",
 //                new File(Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS) + "/TextOutput.txt"),
 //                result ->  Log.i("MyAmplifyApp", "Successfully downloaded: " + result.getFile().getName()),
 //                error -> Log.e("MyAmplifyApp",  "Download Failure", error)
 //        );
-        Toast.makeText(this, "TextOutput" + sumType + ".txt Downloaded", Toast.LENGTH_SHORT).show();
+        Toast.makeText(this, "TextOutput" + sumType + ".txt Downloaded", Toast.LENGTH_SHORT).show(); // Dev Code to know if code is working correctly
     }
 
 

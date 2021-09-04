@@ -68,7 +68,6 @@ public class ImageToTextActivity extends AppCompatActivity {
 
         uploadButton.setOnClickListener(v-> {
             try {
-
                 String imagePath = getPathFromUri(this, Uri.parse(imageUri)); //Gets the real path of the file
                 Log.d("URI Real Path", imagePath);
 
@@ -81,9 +80,8 @@ public class ImageToTextActivity extends AppCompatActivity {
         });
 
         summarizeButton.setOnClickListener(v->{
-            Intent intent = new Intent(this, TextSummarization.class);
+            Intent intent = new Intent(this, TextSummarization.class); // Switching to a new activity
             //intent.putExtra("ImageName", "im2.jpg");
-
             startActivity(intent);
         });
 
@@ -104,8 +102,7 @@ public class ImageToTextActivity extends AppCompatActivity {
         );
     }
 
-
-
+    // Image Cropper Activity
     private void startCropActivity() {
         // Function that begins the crop activity
         CropImage.activity()
@@ -133,7 +130,7 @@ public class ImageToTextActivity extends AppCompatActivity {
         }
     }
 
-    // Stack overflow code that converts URI to real path
+    // Converts URI to a real path
     public static String getPathFromUri(final Context context, final Uri uri) {
 
         final boolean isKitKat = Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT;
