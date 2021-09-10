@@ -14,7 +14,7 @@ import com.amplifyframework.AmplifyException;
 import com.amplifyframework.auth.cognito.AWSCognitoAuthPlugin;
 import com.amplifyframework.core.Amplify;
 import com.amplifyframework.storage.s3.AWSS3StoragePlugin;
-
+// First Activity that user sees on downloading app
 public class LoginActivity extends AppCompatActivity {
 
     // NOTE: Additional functionality+UI remaining - Forgot password
@@ -25,7 +25,7 @@ public class LoginActivity extends AppCompatActivity {
     private TextView userPassword; // Password UI field variable
 
     // Maximum number of login attempts
-    private int COUNTER;
+    private int MAX_LOGINS;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,7 +36,7 @@ public class LoginActivity extends AppCompatActivity {
         Intent mainIntent = new Intent(this, MainActivity.class);
 
         // Set max number of login attempts
-        COUNTER=3;
+        MAX_LOGINS =3;
 
         // Amplify Auth plugin setup on device
         try {
@@ -86,7 +86,7 @@ public class LoginActivity extends AppCompatActivity {
         // Password - Test123@#
 
         // If input fields are not empty, and max login attempts have not been made -> try to login user
-        else if(!(userPassword.getText().toString().isEmpty() && userEmail.getText().toString().isEmpty()) && COUNTER !=0){
+        else if(!(userPassword.getText().toString().isEmpty() && userEmail.getText().toString().isEmpty()) && MAX_LOGINS !=0){
             // Intent to shift to Main Activity upon logging in successfully
             Intent mainIntent = new Intent(this, MainActivity.class);
             // Attempt to sign in
@@ -100,7 +100,7 @@ public class LoginActivity extends AppCompatActivity {
                     error -> Log.e("AmplifyAuthLogin", error.toString())
             );
             // Decrease number of tries
-            COUNTER -=1;
+            MAX_LOGINS -=1;
         }
     }
 }

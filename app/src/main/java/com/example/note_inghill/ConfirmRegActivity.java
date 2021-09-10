@@ -9,7 +9,7 @@ import android.widget.Button;
 import android.widget.TextView;
 
 import com.amplifyframework.core.Amplify;
-
+// Confirm User Registration with OTP
 public class ConfirmRegActivity extends AppCompatActivity {
 
     @Override

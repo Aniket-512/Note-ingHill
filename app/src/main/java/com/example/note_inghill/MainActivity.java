@@ -25,7 +25,7 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        // Unused, implementation remaining
+        // Unused, implementation remaining - possible way of
         userStatus();
         // Sign out intent - move back to AuthActivity
         Intent signoutIntent = new Intent(this, LoginActivity.class);
@@ -38,7 +38,7 @@ public class MainActivity extends AppCompatActivity {
         });
 
         // Sign out using Amplify Auth when button clicked
-        signoutButton = findViewById(R.id.signout_button);
+        Button signoutButton = findViewById(R.id.signout_button);
         signoutButton.setOnClickListener(v -> {
             Amplify.Auth.signOut(
                     () -> Log.i("AmplifyAuth", "Signed out successfully"),

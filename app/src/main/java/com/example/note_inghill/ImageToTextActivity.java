@@ -2,16 +2,11 @@ package com.example.note_inghill;
 
 import static android.Manifest.permission.WRITE_EXTERNAL_STORAGE;
 
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.app.ActivityCompat;
-
-
 import android.content.ContentUris;
 import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.database.Cursor;
-
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
@@ -22,9 +17,13 @@ import android.util.Log;
 import android.widget.Button;
 import android.widget.ImageView;
 
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.ActivityCompat;
+
 import com.amplifyframework.core.Amplify;
 import com.theartofdev.edmodo.cropper.CropImage;
 import com.theartofdev.edmodo.cropper.CropImageView;
+
 import java.io.File;
 import java.io.IOException;
 import java.util.UUID;
