@@ -20,6 +20,7 @@ public class MainActivity extends AppCompatActivity {
 
     private Button signoutButton;
     private Button imageToText; // Button press loads new activity
+    private Button speechtoText;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,6 +36,13 @@ public class MainActivity extends AppCompatActivity {
         imageToText.setOnClickListener(v -> {
             Intent intent = new Intent(this, ImageToTextActivity.class);
             startActivity(intent);
+        });
+
+        //Speech-to-Text Button
+        speechtoText = findViewById(R.id.speechtext_button);
+        speechtoText.setOnClickListener(v -> {
+            Intent speechIntent = new Intent(this, SpeechActivity.class);
+            startActivity(speechIntent);
         });
 
         // Sign out using Amplify Auth when button clicked

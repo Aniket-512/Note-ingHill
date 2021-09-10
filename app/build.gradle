@@ -48,6 +48,11 @@ dependencies {
     implementation 'com.amplifyframework:aws-auth-cognito:1.18.0'
     implementation 'com.amplifyframework:aws-storage-s3:1.24.0' //S3 Storage Plugin
 
+    // Speech-to-Text
+    implementation 'com.arthenica:mobile-ffmpeg-full:4.4'
+    // AWS Admin Queries
+    implementation 'com.amazonaws:aws-android-sdk-apigateway-core:2.25.0'
+
     // ArthurHub Image Cropper
     api 'com.theartofdev.edmodo:android-image-cropper:2.8.+'
     implementation 'com.github.CanHub:Android-Image-Cropper:3.2.2'

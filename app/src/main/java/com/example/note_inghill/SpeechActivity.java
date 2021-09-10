@@ -14,10 +14,7 @@ import androidx.core.app.ActivityCompat;
 
 
 import com.amplifyframework.AmplifyException;
-import com.amplifyframework.auth.AuthUserAttribute;
-import com.amplifyframework.auth.AuthUserAttributeKey;
 import com.amplifyframework.auth.cognito.AWSCognitoAuthPlugin;
-import com.amplifyframework.auth.options.AuthSignUpOptions;
 import com.amplifyframework.core.Amplify;
 import com.amplifyframework.storage.s3.AWSS3StoragePlugin;
 import com.arthenica.mobileffmpeg.Config;
@@ -25,7 +22,6 @@ import com.arthenica.mobileffmpeg.FFmpeg;
 
 import java.io.File;
 import java.io.IOException;
-import java.util.ArrayList;
 import java.util.UUID;
 
 import static com.arthenica.mobileffmpeg.Config.RETURN_CODE_SUCCESS;
@@ -70,34 +66,14 @@ public class SpeechActivity extends AppCompatActivity {
         // Request for audio recording permissions from the user -> result in onRequestPermissionsResult() below
         ActivityCompat.requestPermissions(this, permissions, REQUEST_RECORD_AUDIO_PERMISSION);
 
-/*
-        // Signup code for creating test account
-        ArrayList<AuthUserAttribute> attributes = new ArrayList<>();
-        attributes.add(new AuthUserAttribute(AuthUserAttributeKey.email(), "test@example.com"));
-        attributes.add(new AuthUserAttribute(AuthUserAttributeKey.phoneNumber(), "+917022995558"));
-        attributes.add(new AuthUserAttribute(AuthUserAttributeKey.name(),"Test"));
-
-        Amplify.Auth.signUp(
-                "test@example.com",
-                "Test123@#",
-                AuthSignUpOptions.builder().userAttributes(attributes).build(),
-                result -> Log.i("AmplifyAuth", result.toString()),
-                error -> Log.e("AmplifyAuth", error.toString())
-        );
-
-        Amplify.Auth.confirmSignIn(
-                "",
-                result -> Log.i("AuthQuickstart", result.toString()),
-                error -> Log.e("AuthQuickstart", error.toString())
-        );*/
-
+        /*
         // Sign in to test
         Amplify.Auth.signIn(
                 "test@example.com",
                 "Test123@#",
                 result -> Log.i("AmplifyAuth", result.isSignInComplete() ? "Sign in succeeded" : "Sign in not complete"),
                 error -> Log.e("AmplifyAuth", error.toString())
-        );
+        );*/
 
         // Connect UI buttons to Java code via element IDs in activity_speech.xml
         Button recordButton = findViewById(R.id.record_button);

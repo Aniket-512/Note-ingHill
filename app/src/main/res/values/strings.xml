@@ -20,4 +20,8 @@
     <string name="confirm_button_text">Confirm</string>
     <string name="enter_otp">Enter OTP received via Email:</string>
     <string name="otp_hint">123456</string>
+    <string name="speech_to_text_button">Speech-to-Text</string>
+    <string name="record_button_text">Record</string>
+    <string name="upload_button_text">Upload</string>
+    <string name="stop_record_button">Stop</string>
 </resources>
