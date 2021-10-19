@@ -1,6 +1,9 @@
 package com.example.note_inghill;
 
+import static com.arthenica.mobileffmpeg.Config.RETURN_CODE_SUCCESS;
+
 import android.Manifest;
+import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.media.MediaRecorder;
 import android.os.Bundle;
@@ -12,7 +15,6 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
 
-
 import com.amplifyframework.AmplifyException;
 import com.amplifyframework.auth.cognito.AWSCognitoAuthPlugin;
 import com.amplifyframework.core.Amplify;
@@ -23,8 +25,6 @@ import com.arthenica.mobileffmpeg.FFmpeg;
 import java.io.File;
 import java.io.IOException;
 import java.util.UUID;
-
-import static com.arthenica.mobileffmpeg.Config.RETURN_CODE_SUCCESS;
 
 
 public class SpeechActivity extends AppCompatActivity {
@@ -78,6 +78,7 @@ public class SpeechActivity extends AppCompatActivity {
         // Connect UI buttons to Java code via element IDs in activity_speech.xml
         Button recordButton = findViewById(R.id.record_button);
         Button uploadButton = findViewById(R.id.upload_button);
+        Button summarizeButton = findViewById(R.id.summarize_button);
 
         // Listen for clicks on record button
         recordButton.setOnClickListener(v -> {
@@ -104,9 +105,11 @@ public class SpeechActivity extends AppCompatActivity {
                     );
         });
 
-        Amplify.Storage.getUrl(Amplify.Auth.getCurrentUser().getUserId()+"/"+"test_output.json",
-                result -> Log.i("AmplifyStorage", "Result: "+result.getUrl()),
-                err -> Log.e("AmplifyStorage", "URL Generation failure: ", err));
+        summarizeButton.setOnClickListener(v->{
+            Intent intent = new Intent(this, TextSummarization.class); // Switching to a new activity
+            //intent.putExtra("ImageName", "im2.jpg");
+            startActivity(intent);
+        });
 
     }
 

@@ -19,6 +19,17 @@
         app:layout_constraintVertical_bias="0.499" />
 
     <Button
+        android:id="@+id/summarize_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="28dp"
+        android:text="Summarize"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <Button
         android:id="@+id/upload_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -31,5 +42,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/record_button"
         app:layout_constraintVertical_bias="0.068" />
+
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

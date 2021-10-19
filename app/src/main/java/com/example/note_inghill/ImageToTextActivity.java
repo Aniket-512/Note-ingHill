@@ -94,7 +94,7 @@ public class ImageToTextActivity extends AppCompatActivity {
         String uuid = UUID.randomUUID().toString();
         //Amplify code to upload image to S3
         Amplify.Storage.uploadFile(
-                "im2.jpg", //Amplify.Auth.getCurrentUser().getUserId()+"/"+uuid+".jpg"
+                Amplify.Auth.getCurrentUser().getUserId()+"/" + "im2.jpg",
                 f,
                 result -> Log.i("MyAmplifyApp", "Successfully uploaded: " + result.getKey()),
                 storageFailure -> Log.e("MyAmplifyApp", "Upload failed", storageFailure)
