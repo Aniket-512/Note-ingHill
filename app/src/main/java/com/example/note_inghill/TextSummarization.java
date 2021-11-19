@@ -66,5 +66,5 @@ public class TextSummarization extends AppCompatActivity {
         );
         Toast.makeText(this, "TextOutput" + sumType + ".txt Downloaded", Toast.LENGTH_SHORT).show(); // Dev Code to know if code is working correctly
     }
-    
+
 }

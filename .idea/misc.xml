@@ -3,7 +3,14 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Note-ingHill/app/src/main/res/layout-land/activity_register.xml" value="0.42135416666666664" />
+        <entry key="..\:/Note-ingHill/app/src/main/res/layout/activity_confirm_reg.xml" value="0.3489583333333333" />
+        <entry key="..\:/Note-ingHill/app/src/main/res/layout/activity_image_to_text.xml" value="0.3489583333333333" />
+        <entry key="..\:/Note-ingHill/app/src/main/res/layout/activity_main.xml" value="0.3489583333333333" />
+        <entry key="..\:/Note-ingHill/app/src/main/res/layout/activity_register.xml" value="0.3489583333333333" />
         <entry key="..\:/Note-ingHill/app/src/main/res/layout/activity_speech.xml" value="0.3489583333333333" />
+        <entry key="..\:/Note-ingHill/app/src/main/res/layout/activity_text_summarization.xml" value="0.3489583333333333" />
+        <entry key="..\:/Note-ingHill/app/src/main/res/layout/login_activity.xml" value="0.3489583333333333" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.35833333333333334" />
         <entry key="app/src/main/res/layout/activity_speech.xml" value="0.35833333333333334" />
       </map>
