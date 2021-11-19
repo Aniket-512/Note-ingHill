@@ -56,8 +56,8 @@ public class MainActivity extends AppCompatActivity {
 //        });
 
         //Image To Text Card View
-        speechtoText = findViewById(R.id.speechToTextCard);
-        speechtoText.setOnClickListener(v -> {
+        speechToTextCard = findViewById(R.id.speechToTextCard);
+        speechToTextCard.setOnClickListener(v -> {
             Intent speechIntent = new Intent(this, SpeechActivity.class);
             startActivity(speechIntent);
         });
