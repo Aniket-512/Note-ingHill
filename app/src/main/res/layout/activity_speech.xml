@@ -9,14 +9,15 @@
 
     <Button
         android:id="@+id/record_button"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="209dp"
+        android:layout_height="51dp"
+        android:layout_marginTop="52dp"
         android:text="@string/record_button_text"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:iconTint="#FF0000"
+        android:backgroundTint="#D50000"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.499" />
+        app:layout_constraintTop_toBottomOf="@+id/imageView4" />
 
     <Button
         android:id="@+id/summarize_button"
@@ -43,6 +44,15 @@
         app:layout_constraintTop_toBottomOf="@+id/record_button"
         app:layout_constraintVertical_bias="0.068" />
 
+    <ImageView
+        android:id="@+id/imageView4"
+        android:layout_width="200dp"
+        android:layout_height="200dp"
+        android:layout_marginTop="80dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@android:drawable/ic_btn_speak_now" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
