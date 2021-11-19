@@ -1,12 +1,12 @@
 package com.example.note_inghill;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
-import android.view.View;
 import android.widget.Button;
+
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.cardview.widget.CardView;
 
 import com.amplifyframework.auth.AuthChannelEventName;
 import com.amplifyframework.core.Amplify;
@@ -22,6 +22,9 @@ public class MainActivity extends AppCompatActivity {
     private Button imageToText; // Button press loads new activity
     private Button speechtoText;
 
+    private CardView imageToTextCard;
+    private CardView speechToTextCard;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -32,14 +35,28 @@ public class MainActivity extends AppCompatActivity {
         Intent signoutIntent = new Intent(this, LoginActivity.class);
 
         //Image to Text Button
-        imageToText = findViewById(R.id.imageToTextId);
-        imageToText.setOnClickListener(v -> {
+//        imageToText = findViewById(R.id.imageToTextId);
+//        imageToText.setOnClickListener(v -> {
+//            Intent intent = new Intent(this, ImageToTextActivity.class);
+//            startActivity(intent);
+//        });
+
+        //Image to Text Card view
+        imageToTextCard = findViewById(R.id.ImageToTextCard);
+        imageToTextCard.setOnClickListener(v -> {
             Intent intent = new Intent(this, ImageToTextActivity.class);
             startActivity(intent);
         });
 
         //Speech-to-Text Button
-        speechtoText = findViewById(R.id.speechtext_button);
+//        speechtoText = findViewById(R.id.speechtext_button);
+//        speechtoText.setOnClickListener(v -> {
+//            Intent speechIntent = new Intent(this, SpeechActivity.class);
+//            startActivity(speechIntent);
+//        });
+
+        //Image To Text Card View
+        speechtoText = findViewById(R.id.speechToTextCard);
         speechtoText.setOnClickListener(v -> {
             Intent speechIntent = new Intent(this, SpeechActivity.class);
             startActivity(speechIntent);
