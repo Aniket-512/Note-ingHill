@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ConfirmRegActivity">
+    tools:context="com.capstone.note_inghill.ConfirmRegActivity">
 
     <EditText
         android:id="@+id/otp_field"

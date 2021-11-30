@@ -25,25 +25,25 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.NoteingHill">
         <activity
-            android:name=".TextSummarization"
+            android:name="com.capstone.note_inghill.TextSummarization"
             android:exported="true" />
         <activity
-            android:name=".ImageToTextActivity"
+            android:name="com.capstone.note_inghill.ImageToTextActivity"
             android:exported="true" />
-        <activity android:name=".LoginActivity">
+        <activity android:name="com.capstone.note_inghill.LoginActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".MainActivity" />
-        <activity android:name=".ConfirmRegActivity" />
-        <activity android:name=".RegisterActivity" />
+        <activity android:name="com.capstone.note_inghill.MainActivity" />
+        <activity android:name="com.capstone.note_inghill.ConfirmRegActivity" />
+        <activity android:name="com.capstone.note_inghill.RegisterActivity" />
         <activity
             android:name="com.theartofdev.edmodo.cropper.CropImageActivity"
             android:theme="@style/Base.Theme.AppCompat" />
-        <activity android:name=".SpeechActivity"/>
+        <activity android:name="com.capstone.note_inghill.SpeechActivity"/>
     </application>
 
 </manifest>
