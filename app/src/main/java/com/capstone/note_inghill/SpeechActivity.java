@@ -21,7 +21,6 @@ import com.amplifyframework.core.Amplify;
 import com.amplifyframework.storage.s3.AWSS3StoragePlugin;
 import com.arthenica.mobileffmpeg.Config;
 import com.arthenica.mobileffmpeg.FFmpeg;
-import com.example.note_inghill.R;
 
 import java.io.File;
 import java.io.IOException;

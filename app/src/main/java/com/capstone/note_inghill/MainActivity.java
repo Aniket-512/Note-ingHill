@@ -12,7 +12,6 @@ import com.amplifyframework.auth.AuthChannelEventName;
 import com.amplifyframework.core.Amplify;
 import com.amplifyframework.core.InitializationStatus;
 import com.amplifyframework.hub.HubChannel;
-import com.example.note_inghill.R;
 
 // Main Activity only has a sign out button for now
 // Will show Lecture recording and Image-to-Text feature on this screen in future

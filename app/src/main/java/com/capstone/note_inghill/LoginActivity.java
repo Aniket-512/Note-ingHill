@@ -1,7 +1,5 @@
 package com.capstone.note_inghill;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
@@ -10,11 +8,12 @@ import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.appcompat.app.AppCompatActivity;
+
 import com.amplifyframework.AmplifyException;
 import com.amplifyframework.auth.cognito.AWSCognitoAuthPlugin;
 import com.amplifyframework.core.Amplify;
 import com.amplifyframework.storage.s3.AWSS3StoragePlugin;
-import com.example.note_inghill.R;
 
 // First Activity that user sees on downloading app
 public class LoginActivity extends AppCompatActivity {

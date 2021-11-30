@@ -1,15 +1,14 @@
 package com.capstone.note_inghill;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.widget.Button;
 import android.widget.TextView;
 
+import androidx.appcompat.app.AppCompatActivity;
+
 import com.amplifyframework.core.Amplify;
-import com.example.note_inghill.R;
 
 // Confirm User Registration with OTP
 public class ConfirmRegActivity extends AppCompatActivity {

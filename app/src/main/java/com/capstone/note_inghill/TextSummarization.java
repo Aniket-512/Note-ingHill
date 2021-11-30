@@ -11,7 +11,6 @@ import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.amplifyframework.core.Amplify;
-import com.example.note_inghill.R;
 
 import java.io.File;
 
