@@ -1,4 +1,4 @@
-# Note-ingHill
+# Note-ingHill: A voice-based note making application
 
 ## Setup instructions (Linux)
 ### 1. Pre-requisites (**IMPORTANT**)
