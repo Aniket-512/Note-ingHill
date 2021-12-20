@@ -1,8 +1,6 @@
 # Note-ingHill: A voice-based note making application
 
----
 Find our app on playstore : [Noteing Hill](https://play.google.com/store/apps/details?id=com.capstone.note_inghill) 
----
 
 ## Setup instructions (Linux)
 ### 1. Pre-requisites (**IMPORTANT**)
