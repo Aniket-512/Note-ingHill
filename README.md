@@ -33,3 +33,4 @@ Find our app on playstore : [Noteing Hill](https://play.google.com/store/apps/de
    - Force light theme (or redo the entire UI from scratch)
    - Add loading spinners
    - Add splash screen 
+   - Lock to portrait orientation
