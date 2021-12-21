@@ -1,4 +1,6 @@
-# Note-ingHill
+# Note-ingHill: A voice-based note making application
+
+Find our app on playstore : [Noteing Hill](https://play.google.com/store/apps/details?id=com.capstone.note_inghill) 
 
 ## Setup instructions (Linux)
 ### 1. Pre-requisites (**IMPORTANT**)
@@ -25,3 +27,10 @@
 - Run Android Studio as a Root user (Linux) or as an Administrator (Windows).
 - (For Windows only) Check your path variables. If node path is not present, add it to your path.
 - (For Windows Only) If you get a EEXIST: File already exists error, make sure you contact Vishnu. In your C:/Users/<UserName> path, your username has a space. Refer to this link : https://docs.microsoft.com/en-US/troubleshoot/windows-client/user-profiles-and-logon/renaming-user-account-not-change-profile-path
+  
+### To-Do
+   - Dynamic render of UI elements
+   - Force light theme (or redo the entire UI from scratch)
+   - Add loading spinners
+   - Add splash screen 
+   - Lock to portrait orientation
