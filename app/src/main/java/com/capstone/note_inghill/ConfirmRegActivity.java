@@ -7,6 +7,7 @@ import android.widget.Button;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.app.AppCompatDelegate;
 
 import com.amplifyframework.core.Amplify;
 
@@ -17,6 +18,7 @@ public class ConfirmRegActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_confirm_reg);
+        AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
 
         // Get user's Email ID from RegisterActivity
         String email = getIntent().getStringExtra("email");

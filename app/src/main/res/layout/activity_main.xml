@@ -11,6 +11,7 @@
         android:layout_width="350dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="200dp"
+        app:cardBackgroundColor="#FFFFFF"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
@@ -26,12 +27,11 @@
                 android:layout_marginStart="5dp"
                 android:layout_marginTop="5dp"
                 android:layout_marginBottom="5dp"
-                android:background="#000000"
                 android:foregroundTint="#FFFFFF"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
-                tools:srcCompat="@drawable/crop_image_menu_flip" />
+                app:srcCompat="@drawable/imagetotext" />
 
             <TextView
                 android:id="@+id/ImageToTextTitle"
@@ -40,6 +40,7 @@
                 android:layout_marginStart="10dp"
                 android:layout_marginTop="10dp"
                 android:text="Image to Text"
+                android:textColor="#000000"
                 android:textSize="20sp"
                 android:textStyle="bold"
                 app:layout_constraintStart_toEndOf="@+id/imageIcon"
@@ -54,6 +55,7 @@
                 android:layout_marginEnd="10dp"
                 android:layout_marginBottom="10dp"
                 android:text="Convert an Image to Text by taking a picture via camera or gallery"
+                android:textColor="#000000"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toEndOf="@+id/imageIcon"
@@ -83,12 +85,11 @@
                 android:layout_marginStart="5dp"
                 android:layout_marginTop="5dp"
                 android:layout_marginBottom="5dp"
-                android:background="#000000"
                 android:foregroundTint="#FFFFFF"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
-                tools:srcCompat="@android:drawable/stat_sys_speakerphone" />
+                app:srcCompat="@drawable/speechrecognition" />
 
             <TextView
                 android:id="@+id/SpeechToTextText"
@@ -97,6 +98,7 @@
                 android:layout_marginStart="10dp"
                 android:layout_marginTop="10dp"
                 android:text="Speech To Text"
+                android:textColor="#000000"
                 android:textSize="20sp"
                 android:textStyle="bold"
                 app:layout_constraintStart_toEndOf="@+id/speechIcon"
@@ -111,6 +113,7 @@
                 android:layout_marginEnd="10dp"
                 android:layout_marginBottom="10dp"
                 android:text="Convert Audio to Text via AWS Transcribe"
+                android:textColor="#000000"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toEndOf="@+id/speechIcon"

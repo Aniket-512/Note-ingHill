@@ -9,6 +9,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.app.AppCompatDelegate;
 
 import com.amplifyframework.AmplifyException;
 import com.amplifyframework.auth.cognito.AWSCognitoAuthPlugin;
@@ -32,6 +33,7 @@ public class LoginActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.login_activity);
+        AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
 
         // Intent to shift to Main Activity upon logging in successfully
         Intent mainIntent = new Intent(this, MainActivity.class);
