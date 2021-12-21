@@ -29,8 +29,9 @@ Find our app on playstore : [Noteing Hill](https://play.google.com/store/apps/de
 - (For Windows Only) If you get a EEXIST: File already exists error, make sure you contact Vishnu. In your C:/Users/<UserName> path, your username has a space. Refer to this link : https://docs.microsoft.com/en-US/troubleshoot/windows-client/user-profiles-and-logon/renaming-user-account-not-change-profile-path
   
 ### To-Do
-   - Dynamic render of UI elements
-   - Force light theme (or redo the entire UI from scratch)
+   - Dynamic render of UI elements 
+   - Force light theme (or redo the entire UI from scratch) (Completed)
    - Add loading spinners
    - Add splash screen 
-   - Lock to portrait orientation
+   - Lock to portrait orientation (Completed)
+   - Add app logo (Completed)
